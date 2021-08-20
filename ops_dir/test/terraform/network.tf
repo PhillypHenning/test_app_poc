@@ -31,7 +31,7 @@ resource "aws_security_group" "security_group_example_app" {
     description = "Allow TLS inbound traffic on port 80 (http)"
     vpc_id = "${aws_vpc.vpc_example_app.id}"
 
-    // Restricts inbound traffic to the 3000 port 
+    // Restricts inbound traffic to the 3000 container port : 80 external port 
     ingress {
         from_port = 80
         to_port = 3000
@@ -39,7 +39,7 @@ resource "aws_security_group" "security_group_example_app" {
         cidr_blocks = ["0.0.0.0/0"]
     }
     
-    // Unrestricted outbound traffic
+    // Unrestricted outbound container traffic
     egress {
         from_port = 0
         to_port = 0

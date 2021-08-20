@@ -16,7 +16,7 @@ resource "aws_ecs_task_definition" "backend_task" {
 [
     {
         "name": "node_app_container",
-        "image": "awildphil/node-app-poc:latest",
+        "image": "registry.hub.docker.com/awildphil/node-app-poc:latest",
         "memory": 512,
         "essential": true,
         "portMappings": [

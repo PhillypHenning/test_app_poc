@@ -1,3 +1,5 @@
+# Because we don't use an ECR, I don't think this is doing much. 
+
 resource "aws_iam_role" "ecs_role" {
   name = "phil-test-app"
 
