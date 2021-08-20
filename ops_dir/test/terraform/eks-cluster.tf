@@ -5,7 +5,7 @@
 
 # Local variables
 locals {
-  cluster_name = "bitops-eks"
+  cluster_name = "${var.app_name}-eks"
 }
 
 # Using the aws provider eks module
@@ -19,6 +19,7 @@ module "eks" {
   node_groups = {
     test = {
       instance_type = "t3.small"
+      name = "${var.app_name}-nodegroup"
     }
   }
 }

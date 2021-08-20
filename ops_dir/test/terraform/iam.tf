@@ -1,7 +1,7 @@
 # Because we don't use an ECR, I don't think this is doing much. 
 
 resource "aws_iam_role" "ecs_role" {
-  name = "phil-test-app"
+  name = "${var.app_name}-ecrTaskPermissionRole"
 
   assume_role_policy = <<POLICY
 {

@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "backend_task" {
-    family = "phil-test-app-poc-family"
+    family = "${var.app_name}-family"
 
     // Fargate is a type of ECS that requires awsvpc network_mode
     requires_compatibilities = ["FARGATE"]
@@ -47,5 +47,12 @@ resource "aws_ecs_service" "backend_service" {
         subnets = ["${aws_subnet.public_a.id}", "${aws_subnet.public_b.id}"]
         security_groups = ["${aws_security_group.security_group_example_app.id}"]
         assign_public_ip = true
+    }
+
+    # I think this is looking for a Amazon Resource Name that equals a load balancer... not just a policy
+    load_balancer {
+      target_group_arn = aws_lb.test.arn
+      container_name   = "backend_service"
+      container_port   = 3000
     }
 }

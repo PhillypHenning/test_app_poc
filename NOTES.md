@@ -9,5 +9,5 @@ docker run \
 -v $BITOPS_HOME:/opt/bitops \
 bitovi/bitops:latest
 
-
-export TF_LOG=DEBUG; export TF_VAR_aws_default_region=$AWS_DEFAULT_REGION; export TF_VAR_aws_secret_access_key=$AWS_SECRET_ACCESS_KEY; export TF_VAR_aws_access_key_id=$AWS_ACCESS_KEY_ID
+export TF_LOG=DEBUG;
+export TF_VAR_aws_default_region=$AWS_DEFAULT_REGION; export TF_VAR_aws_secret_access_key=$AWS_SECRET_ACCESS_KEY; export TF_VAR_aws_access_key_id=$AWS_ACCESS_KEY_ID

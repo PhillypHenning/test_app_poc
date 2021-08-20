@@ -13,7 +13,7 @@ module "vpc" {
   version = "2.6.0"
 
   
-  name                 = "bitops-philh-vpc"
+  name                 = "${var.app_name}-vpc"
   cidr                 = local.cidr
   azs                  = data.aws_availability_zones.available.names
   private_subnets      = [cidrsubnet(local.cidr, 8, 1), cidrsubnet(local.cidr, 8, 2), cidrsubnet(local.cidr, 8, 3)]
