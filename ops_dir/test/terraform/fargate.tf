@@ -49,10 +49,10 @@ resource "aws_ecs_service" "backend_service" {
         assign_public_ip = true
     }
 
-    # I think this is looking for a Amazon Resource Name that equals a load balancer... not just a policy
+    # Link the Load balancer 
     load_balancer {
       target_group_arn = aws_lb_target_group.test.arn
-      container_name   = "backend_service"
+      container_name   = "node_app_container" # Must be the same one used in the Task Definition
       container_port   = 3000
     }
 }
