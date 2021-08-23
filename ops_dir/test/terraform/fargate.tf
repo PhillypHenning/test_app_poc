@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "backend_task" {
         "portMappings": [
             {
                 "containerPort": 3000,
-                "hostPort": 3000
+                "hostPort": 80
             }
         ]
     }
@@ -43,16 +43,18 @@ resource "aws_ecs_service" "backend_service" {
     launch_type = "FARGATE"
     desired_count = 1
 
+    # iamrole does not need to be specified because we are using awsvpc network mode
+
     network_configuration {
         subnets = ["${aws_subnet.public_a.id}", "${aws_subnet.public_b.id}"]
         security_groups = ["${aws_security_group.security_group_example_app.id}"]
         assign_public_ip = true
     }
 
-    # Link the Load balancer 
+    #Link the Load balancer 
     load_balancer {
-      target_group_arn = aws_lb_target_group.test.arn
-      container_name   = "node_app_container" # Must be the same one used in the Task Definition
-      container_port   = 3000
+     target_group_arn = aws_lb_target_group.test.arn
+     container_name   = "node_app_container" # Must be the same one used in the Task Definition
+     container_port   = 3000
     }
 }
