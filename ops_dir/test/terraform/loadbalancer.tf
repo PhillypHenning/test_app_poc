@@ -23,9 +23,9 @@ resource "aws_lb_target_group" "test" {
     create_before_destroy = true
   }
 
-  # health_check {
-  #   enabled = false
-  # }
+  //health_check {
+    // enabled = false <-- awsvpc doesn't allow Health checks to be disabled
+  //}
 }
 
 

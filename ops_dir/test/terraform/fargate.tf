@@ -41,7 +41,7 @@ resource "aws_ecs_service" "backend_service" {
     task_definition = "${aws_ecs_task_definition.backend_task.arn}"
 
     launch_type = "FARGATE"
-    desired_count = 1
+    desired_count = 2
 
     # iamrole does not need to be specified because we are using awsvpc network mode
 
