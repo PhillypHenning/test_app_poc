@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "backend_task" {
         "portMappings": [
             {
                 "containerPort": 3000,
-                "hostPort": 80
+                "hostPort": 3000
             }
         ]
     }
@@ -51,7 +51,7 @@ resource "aws_ecs_service" "backend_service" {
         assign_public_ip = true
     }
 
-    #Link the Load balancer 
+    # Link the Load balancer 
     load_balancer {
      target_group_arn = aws_lb_target_group.test.arn
      container_name   = "node_app_container" # Must be the same one used in the Task Definition
